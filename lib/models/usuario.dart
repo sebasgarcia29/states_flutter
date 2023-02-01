@@ -1,9 +1,9 @@
-class Usuario {
+class User {
   String name;
   int age;
   List<String> professions;
 
-  Usuario({
+  User({
     required this.name,
     required this.age,
     required this.professions,
