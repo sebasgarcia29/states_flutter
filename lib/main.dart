@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:states/bloc/usuario/user_cubit.dart';
 
 import 'package:states/pages/page1_pages.dart';
 import 'package:states/pages/page2_pages.dart';
@@ -10,21 +12,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      initialRoute: '/page1',
-      routes: {
-        '/page1': (_) => const Page1Screen(),
-        '/page2': (_) => const Page2Screen(),
-      },
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => UserCubit()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Material App',
+        initialRoute: '/page1',
+        routes: {
+          '/page1': (_) => const Page1Screen(),
+          '/page2': (_) => const Page2Screen(),
+        },
       ),
     );
   }

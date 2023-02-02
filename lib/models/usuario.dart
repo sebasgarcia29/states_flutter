@@ -1,11 +1,23 @@
 class User {
-  String name;
-  int age;
-  List<String> professions;
+  final String name;
+  final int age;
+  final List<String>? professions;
 
   User({
     required this.name,
     required this.age,
-    required this.professions,
+    this.professions,
   });
+
+  User copyWith({
+    String? name,
+    int? age,
+    List<String>? professions,
+  }) {
+    return User(
+      name: name ?? this.name,
+      age: age ?? this.age,
+      professions: professions ?? this.professions,
+    );
+  }
 }
